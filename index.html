@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Isha Adhikari — AI / Machine Learning Engineer</title>
+<meta name="description" content="Isha Adhikari — MSc Data Science candidate and Computer Engineering graduate building machine learning, deep learning and LLM-agent systems." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --paper: #ffffff;
+    --paper-2: #f7f8fa;
+    --ink: #14161a;
+    --slate: #5b6570;
+    --slate-2: #868f9b;
+    --line: #e6e8ec;
+    --line-2: #d7dbe0;
+    --accent: #4338ca;
+    --accent-soft: #eef0fe;
+    --accent-ink: #2f2aa5;
+
+    --display: "Space Grotesk", system-ui, sans-serif;
+    --body: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --wrap: 1080px;
+    --gap: clamp(1rem, 4vw, 2rem);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection { background: var(--accent-soft); color: var(--accent-ink); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: var(--gap);
+  }
+
+  /* ---------- eyebrow / mono labels (the signature) ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6ch;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.6rem;
+    height: 1px;
+    background: var(--line-2);
+  }
+
+  /* ---------- nav ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  header.nav.scrolled { border-bottom-color: var(--line); }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+  }
+  .brand {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+  }
+  .brand b { color: var(--accent-ink); font-weight: 500; }
+  .nav-links { display: flex; gap: 1.9rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.9rem;
+    color: var(--slate);
+    font-weight: 500;
+    transition: color 0.18s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-toggle {
+    display: none;
+    background: none; border: 0; cursor: pointer;
+    padding: 0.4rem; color: var(--ink);
+  }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6.2vw, 4.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin: 1.1rem 0 0;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero .lede {
+    max-width: 44ch;
+    margin: 1.5rem 0 0;
+    font-size: clamp(1.05rem, 2.4vw, 1.22rem);
+    color: var(--slate);
+  }
+  .hero .role {
+    margin-top: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--slate);
+  }
+  .hero .role .dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: #24b47e; margin-right: 0.6ch; vertical-align: middle;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.2rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6ch;
+    font-weight: 500; font-size: 0.95rem;
+    padding: 0.72rem 1.25rem; border-radius: 8px;
+    border: 1px solid var(--line-2);
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.primary:hover { background: var(--accent-ink); }
+  .btn.ghost:hover { border-color: var(--ink); }
+
+  /* ---------- section frame ---------- */
+  section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  .section-head { margin-bottom: 2.4rem; }
+  .section-head h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.4vw, 2rem);
+    letter-spacing: -0.02em;
+    margin: 0.7rem 0 0;
+  }
+  .divider { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* ---------- skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .skill-cell { background: var(--paper); padding: 1.5rem 1.4rem; }
+  .skill-cell h3 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-2);
+    margin: 0 0 0.9rem;
+    font-weight: 500;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    padding: 0.28rem 0.6rem;
+    border-radius: 6px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  /* ---------- projects ---------- */
+  .projects { display: grid; gap: 1.1rem; }
+  .card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.6rem 1.7rem;
+    background: var(--paper);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    border-color: var(--line-2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -18px rgba(20,22,26,0.35);
+  }
+  .card-top {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .card-index { font-family: var(--mono); font-size: 0.78rem; color: var(--slate-2); }
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.24rem;
+    letter-spacing: -0.01em;
+    margin: 0.5rem 0 0;
+  }
+  .card .kind {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent-ink);
+    letter-spacing: 0.04em;
+  }
+  .card p { color: var(--slate); margin: 0.7rem 0 1.1rem; font-size: 0.97rem; }
+  .card .stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+  .card .stack span {
+    font-family: var(--mono);
+    font-size: 0.73rem;
+    color: var(--slate);
+    padding: 0.2rem 0.5rem;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+  .card-links { display: flex; gap: 1.2rem; }
+  .card-links a {
+    font-size: 0.88rem; font-weight: 500; color: var(--accent-ink);
+    display: inline-flex; align-items: center; gap: 0.4ch;
+  }
+  .card-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- about ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+  .about p { color: var(--slate); }
+  .about p + p { margin-top: 1rem; }
+  .facts { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .fact { padding: 1.1rem 1.3rem; }
+  .fact + .fact { border-top: 1px solid var(--line); }
+  .fact .k { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-2); }
+  .fact .v { margin-top: 0.3rem; font-weight: 500; font-size: 0.98rem; }
+
+  /* ---------- contact ---------- */
+  .contact { text-align: center; }
+  .contact h2 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.8rem, 5vw, 2.8rem); letter-spacing: -0.02em;
+    margin: 0.8rem auto 0; max-width: 18ch;
+  }
+  .contact p { color: var(--slate); max-width: 46ch; margin: 1.1rem auto 0; }
+  .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+
+  /* ---------- footer ---------- */
+  footer.site {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+  .foot-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.8rem;
+    font-size: 0.82rem; color: var(--slate-2);
+    font-family: var(--mono);
+  }
+
+  /* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 720px) {
+    .nav-links {
+      position: fixed; inset: 66px 0 auto 0;
+      flex-direction: column; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: 0.5rem 0; transform: translateY(-120%);
+      transition: transform 0.28s ease; align-items: stretch;
+    }
+    .nav-links.open { transform: none; }
+    .nav-links a { padding: 0.9rem var(--gap); }
+    .nav-toggle { display: inline-flex; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">isha<b>.</b>adhikari</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">AI / Machine Learning Engineer</span>
+      <h1 class="reveal">I build machine learning<br />and <span class="accent">LLM-agent</span> systems.</h1>
+      <p class="lede reveal">MSc Data Science candidate and Computer Engineering graduate, working across deep learning, big data, NLP, and LLM applications — from research models to deployed services.</p>
+      <p class="role reveal"><span class="dot"></span>Based in Kathmandu, Nepal · Open to AI Engineer roles</p>
+      <div class="cta-row reveal">
+        <a href="#work" class="btn primary">View work
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contact" class="btn ghost">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">what I work with</span>
+        <h2>Skills &amp; tools</h2>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-cell">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Java</span><span class="tag">R</span><span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h3>ML &amp; Deep Learning</h3>
+          <div class="tags">
+            <span class="tag">scikit-learn</span><span class="tag">TensorFlow / Keras</span><span class="tag">XGBoost</span><span class="tag">Transfer learning</span><span class="tag">TFLite</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h3>LLMs &amp; Agents</h3>
+          <div class="tags">
+            <span class="tag">LangGraph</span><span class="tag">LLM APIs</span><span class="tag">Prompt engineering</span><span class="tag">RAG</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h3>Backend &amp; Data</h3>
+          <div class="tags">
+            <span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">PostgreSQL</span><span class="tag">PySpark</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h3>Workflow</h3>
+          <div class="tags">
+            <span class="tag">Git</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span><span class="tag">Linux</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h3>Analysis &amp; Viz</h3>
+          <div class="tags">
+            <span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">Tableau</span><span class="tag">Matplotlib</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">selected projects</span>
+        <h2>Things I&rsquo;ve built</h2>
+      </div>
+
+      <div class="projects">
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="kind">LLM Agent · Backend</span>
+            <span class="card-index">01</span>
+          </div>
+          <h3>Scholar Agent</h3>
+          <p>An LLM agent that answers natural-language questions over an academic publications database. Built on a LangGraph state machine that routes, retrieves, grades its own results, and rewrites the query to retry when they fall short — a self-correcting agent, not a one-shot chatbot.</p>
+          <div class="stack">
+            <span>LangGraph</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>GitHub Actions</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/Isha-12345/scholar-agent" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="kind">Deep Learning · Edge AI</span>
+            <span class="card-index">02</span>
+          </div>
+          <h3>Intelligent Access Control</h3>
+          <p>Three-class facial access control (known / unknown / intrusion) using MobileNet transfer learning and embedding-based open-set anomaly detection, quantized to INT8 TFLite and deployed on a Raspberry Pi with live GPIO alerts.</p>
+          <div class="stack">
+            <span>TensorFlow/Keras</span><span>MobileNet</span><span>TFLite</span><span>Raspberry Pi</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/Isha-12345/ann-face-access-control" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="kind">Big Data · ML</span>
+            <span class="card-index">03</span>
+          </div>
+          <h3>Flight Delay Analysis at Scale</h3>
+          <p>A distributed PySpark pipeline over a large flights dataset — classification, regression, and K-Means clustering with Spark MLlib — with model outputs exported to interactive Tableau dashboards.</p>
+          <div class="stack">
+            <span>PySpark</span><span>Spark MLlib</span><span>Tableau</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/Isha-12345/flight-delay-bigdata" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="kind">NLP · Information Retrieval</span>
+            <span class="card-index">04</span>
+          </div>
+          <h3>CU Research Portal</h3>
+          <p>A vertical academic search engine with a Selenium crawler, a hand-built TF-IDF inverted index with cosine-similarity ranking, and a from-scratch Naive Bayes classifier for topic categorization.</p>
+          <div class="stack">
+            <span>Python</span><span>Selenium</span><span>TF-IDF</span><span>Naive Bayes</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/Isha-12345/CU-Research-Portal-Academic-Search-Engine-Document-Clustering-System" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="kind">Machine Learning</span>
+            <span class="card-index">05</span>
+          </div>
+          <h3>Data-Center PUE &amp; Carbon Prediction</h3>
+          <p>Regression models comparing Random Forest, XGBoost, and SVR to predict data-center efficiency (PUE) and CO₂ emissions, with cross-validation, feature-importance analysis, and Nepal-specific emission scenarios.</p>
+          <div class="stack">
+            <span>scikit-learn</span><span>XGBoost</span><span>pandas</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/Isha-12345/Carbon-Emission-and-PUE-Prediction-for-Data-Centers-in-Nepal-using-ML-Algorithms" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="kind">Statistical Modeling</span>
+            <span class="card-index">06</span>
+          </div>
+          <h3>Blood Glucose Dynamics</h3>
+          <p>Nonlinear regression modeling of short-term blood-glucose response to insulin, carbohydrates, and activity across ~22,000 samples in R, with exploratory analysis and model diagnostics.</p>
+          <div class="stack">
+            <span>R</span><span>ggplot2</span><span>Nonlinear regression</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/Isha-12345/Modeling-Blood-Glucose-Dynamics-Using-Nonlinear-Regression" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">background</span>
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about reveal">
+          <p>I&rsquo;m a Computer Engineering graduate currently pursuing an MSc in Data Science. My work spans the full range of applied ML — deep learning and edge deployment, distributed data processing, information retrieval, and, most recently, LLM agents and backend services.</p>
+          <p>I started out as a Java developer working with PostgreSQL and REST services, which gave me a solid engineering foundation before I moved deeper into machine learning. Alongside my studies I teach computer science and build websites as a freelancer.</p>
+          <p>I&rsquo;m looking for an AI Engineer role where I can keep building real systems — turning models and language capabilities into products that ship.</p>
+        </div>
+        <div class="facts reveal">
+          <div class="fact"><div class="k">Focus</div><div class="v">AI / ML Engineering</div></div>
+          <div class="fact"><div class="k">Studying</div><div class="v">MSc Data Science</div></div>
+          <div class="fact"><div class="k">Degree</div><div class="v">BE Computer Engineering</div></div>
+          <div class="fact"><div class="k">Location</div><div class="v">Kathmandu, Nepal</div></div>
+          <div class="fact"><div class="k">Also</div><div class="v">Teaching · Freelance web dev</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <span class="eyebrow reveal" style="justify-content:center;">get in touch</span>
+      <h2 class="reveal">Let&rsquo;s build something.</h2>
+      <p class="reveal">I&rsquo;m open to AI Engineer and machine learning roles, and happy to talk through any of the projects above. The fastest way to reach me is email.</p>
+      <div class="contact-links reveal">
+        <a href="mailto:ishaa6768@gmail.com" class="btn primary">Email me</a>
+        <a href="https://github.com/Isha-12345" target="_blank" rel="noopener" class="btn ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/isha-a-3379651ab" target="_blank" rel="noopener" class="btn ghost">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <span>© <span id="year"></span> Isha Adhikari</span>
+    <span>Built with HTML · CSS · JS</span>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // nav border on scroll
+  const nav = document.getElementById("nav");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // mobile menu
+  const toggle = document.getElementById("navToggle");
+  const links = document.getElementById("navLinks");
+  toggle.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  links.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      links.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    })
+  );
+
+  // scroll reveal
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const items = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("in"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    items.forEach((el) => io.observe(el));
+  }
+</script>
+</body>
+</html>
